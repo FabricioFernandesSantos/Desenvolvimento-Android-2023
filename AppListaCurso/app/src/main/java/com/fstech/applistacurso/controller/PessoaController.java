@@ -9,6 +9,7 @@ import com.fstech.applistacurso.view.MainActivity;
 
 public class PessoaController {
 
+
     SharedPreferences preferences;
     SharedPreferences.Editor listavip;
 
