@@ -19,15 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
 
+    SharedPreferences.Editor listavip;
+
     public static final String NOME_PREFERENCES = "pref_listavip";
 
     PessoaController controller;
 
     Pessoa pessoa;
-    Pessoa outraPessoa;
-
-    String dadosPessoa;
-    String dadosOutraPessoa;
 
     EditText editPrimeiroNome;
     EditText editSobrenomeAluno;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences(NOME_PREFERENCES,0);
-        SharedPreferences.Editor listavip = preferences.edit();
+        listavip = preferences.edit();
 
 
         controller = new PessoaController();
@@ -82,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 editSobrenomeAluno.setText("");
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
+
+                listavip.clear();
+                listavip.apply();
+
+
             }
         });
 
