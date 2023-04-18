@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
+
                 controller.limpar();
 
             }

@@ -38,6 +38,7 @@ public class PessoaController {
     }
 
     public Pessoa buscar(Pessoa pessoa) {
+
         pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
         pessoa.setSobreNome(preferences.getString("sobreNome", ""));
         pessoa.setCursoDesejado(preferences.getString("nomeCurso", ""));
