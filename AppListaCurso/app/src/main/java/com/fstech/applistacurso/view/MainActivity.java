@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences.Editor listavip;
 
+
     public static final String NOME_PREFERENCES = "pref_listavip";
 
     PessoaController controller;
 
     Pessoa pessoa;
+
 
     EditText editPrimeiroNome;
     EditText editSobrenomeAluno;
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnSalvar;
     Button btnFinalizar;
-
 
 
     @Override
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(editNomeCurso.getText().toString());
                 pessoa.setSobreNome(editTelefoneContato.getText().toString());
 
+
                 Toast.makeText(MainActivity.this, "Salvo "+ pessoa.toString(), Toast.LENGTH_SHORT).show();
 
                 listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
@@ -114,13 +116,20 @@ public class MainActivity extends AppCompatActivity {
 
 
                 controller.salvar(pessoa);
+                
+                Toast.makeText(MainActivity.this, "Salvo " + pessoa.
 
             }
 
         });
 
 
+
         Log.i("POOAndroid",pessoa.toString());
+
+        Log.i("POOAndroid", pessoa.toString());
+        Log.i("POOAndroid", outraPessoa.toString());
+
 
     }
 }
