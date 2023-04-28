@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                 controller.salvar(pessoa);
                 
-                Toast.makeText(MainActivity.this, "Salvo " + pessoa.
+          //      Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString());
 
             }
 
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Log.i("POOAndroid", pessoa.toString());
-        Log.i("POOAndroid", outraPessoa.toString());
+
 
 
     }
