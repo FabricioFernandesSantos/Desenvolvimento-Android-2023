@@ -17,10 +17,18 @@ import com.fstech.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+
+    SharedPreferences.Editor listavip;
+
+
+    public static final String NOME_PREFERENCES = "pref_listavip";
+
 
     PessoaController controller;
 
     Pessoa pessoa;
+
 
     EditText editPrimeiroNome;
     EditText editSobrenomeAluno;
@@ -87,19 +95,44 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pessoa.setPrimeiroNome(editPrimeiroNome.getText().toString());
                 pessoa.setSobreNome(editSobrenomeAluno.getText().toString());
+
                 pessoa.setCursoDesejado(editNomeCurso.getText().toString());
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
+
+                pessoa.setSobreNome(editNomeCurso.getText().toString());
+                pessoa.setSobreNome(editTelefoneContato.getText().toString());
+
+
+                Toast.makeText(MainActivity.this, "Salvo "+ pessoa.toString(), Toast.LENGTH_SHORT).show();
+
+                listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
+                listavip.putString("sobreNome",pessoa.getSobreNome());
+                listavip.putString("nomeCurso",pessoa.getCursoDesejado());
+                listavip.putString("telefoneContato",pessoa.getTelefoneContato());
+                listavip.apply();
+
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();
 
                 controller.salvar(pessoa);
+                
+                Toast.makeText(MainActivity.this, "Salvo " + pessoa.
 
             }
 
         });
 
 
+
         Log.i("POOAndroid", pessoa.toString());
+
+
+        Log.i("POOAndroid",pessoa.toString());
+
+
+        Log.i("POOAndroid", pessoa.toString());
+        Log.i("POOAndroid", outraPessoa.toString());
+
 
     }
 }
