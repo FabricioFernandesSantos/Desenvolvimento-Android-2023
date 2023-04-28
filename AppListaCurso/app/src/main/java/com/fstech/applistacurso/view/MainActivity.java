@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String NOME_PREFERENCES = "pref_listavip";
 
+
     PessoaController controller;
 
     Pessoa pessoa;
@@ -44,19 +45,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferences = getSharedPreferences(NOME_PREFERENCES,0);
-        listavip = preferences.edit();
-
-
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
 
         pessoa = new Pessoa();
 
-        pessoa.setPrimeiroNome(preferences.getString("primeiroNome",""));
-        pessoa.setSobreNome(preferences.getString("sobreNome",""));
-        pessoa.setCursoDesejado(preferences.getString("nomeCurso",""));
-        pessoa.setTelefoneContato(preferences.getString("telefoneContato",""));
+        controller.buscar(pessoa);
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenomeAluno = findViewById(R.id.editSobrenomeAluno);
@@ -82,9 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
-                listavip.clear();
-                listavip.apply();
 
+                controller.limpar();
 
             }
         });
@@ -102,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pessoa.setPrimeiroNome(editPrimeiroNome.getText().toString());
                 pessoa.setSobreNome(editSobrenomeAluno.getText().toString());
+
+                pessoa.setCursoDesejado(editNomeCurso.getText().toString());
+                pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
+
                 pessoa.setSobreNome(editNomeCurso.getText().toString());
                 pessoa.setSobreNome(editTelefoneContato.getText().toString());
 
@@ -115,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 listavip.apply();
 
 
+                Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();
+
                 controller.salvar(pessoa);
                 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.
@@ -125,7 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Log.i("POOAndroid", pessoa.toString());
+
+
         Log.i("POOAndroid",pessoa.toString());
+
 
         Log.i("POOAndroid", pessoa.toString());
         Log.i("POOAndroid", outraPessoa.toString());
