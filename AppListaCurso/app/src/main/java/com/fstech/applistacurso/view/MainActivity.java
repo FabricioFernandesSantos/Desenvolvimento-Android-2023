@@ -2,32 +2,33 @@ package com.fstech.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.fstech.applistacurso.R;
+import com.fstech.applistacurso.controller.CursoController;
 import com.fstech.applistacurso.controller.PessoaController;
 import com.fstech.applistacurso.model.Pessoa;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
 
-    SharedPreferences.Editor listavip;
-
-
-    public static final String NOME_PREFERENCES = "pref_listavip";
 
 
     PessoaController controller;
+    CursoController cursoController;
 
     Pessoa pessoa;
+    List<String> nomeDosCursos;
 
 
     EditText editPrimeiroNome;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnSalvar;
     Button btnFinalizar;
+    Spinner spinner;
 
 
     @Override
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         controller = new PessoaController(MainActivity.this);
         controller.toString();
 
+
         pessoa = new Pessoa();
 
         controller.buscar(pessoa);
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         editSobrenomeAluno = findViewById(R.id.editSobrenomeAluno);
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
+
+
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenomeAluno.setText(pessoa.getSobreNome());
@@ -66,6 +71,22 @@ public class MainActivity extends AppCompatActivity {
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+
+        //Adapter
+        //Layout
+        //Injetar o Adapeter ao Spiner
+
+        cursoController = new CursoController();
+        nomeDosCursos = cursoController.dadosParaSpinner();
+        spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                cursoController.dadosParaSpinner());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinner.setAdapter(adapter);
 
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
@@ -105,11 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo "+ pessoa.toString(), Toast.LENGTH_SHORT).show();
 
-                listavip.putString("primeiroNome",pessoa.getPrimeiroNome());
-                listavip.putString("sobreNome",pessoa.getSobreNome());
-                listavip.putString("nomeCurso",pessoa.getCursoDesejado());
-                listavip.putString("telefoneContato",pessoa.getTelefoneContato());
-                listavip.apply();
+
 
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();

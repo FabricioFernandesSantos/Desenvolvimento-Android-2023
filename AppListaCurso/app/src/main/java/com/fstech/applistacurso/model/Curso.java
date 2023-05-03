@@ -4,6 +4,10 @@ public class Curso {
 
     private String nomeDoCursoDesejador;
 
+    public Curso(String nomeDoCursoDesejador) {
+        this.nomeDoCursoDesejador = nomeDoCursoDesejador;
+    }
+
     public String getNomeDoCursoDesejador() {
         return nomeDoCursoDesejador;
     }
