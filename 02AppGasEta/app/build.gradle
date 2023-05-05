@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.fstech.applistacurso'
+    namespace 'com.fstech.appgaseta'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.fstech.applistacurso"
+        applicationId "com.fstech.appgaseta"
         minSdk 26
         targetSdk 33
         versionCode 1
