@@ -1,4 +1,4 @@
-package com.fstech.applistacurso.view;
+package com.fstech.appgaseta.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.fstech.applistacurso.R;
-import com.fstech.applistacurso.controller.CursoController;
-import com.fstech.applistacurso.controller.PessoaController;
-import com.fstech.applistacurso.model.Pessoa;
+import com.fstech.appgaseta.R;
+import com.fstech.appgaseta.controller.CursoController;
+import com.fstech.appgaseta.controller.PessoaController;
+import com.fstech.appgaseta.model.Pessoa;
 
 import java.util.List;
 

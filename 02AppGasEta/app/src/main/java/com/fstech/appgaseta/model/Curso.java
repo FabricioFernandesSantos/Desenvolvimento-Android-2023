@@ -1,4 +1,4 @@
-package com.fstech.applistacurso.model;
+package com.fstech.appgaseta.model;
 
 public class Curso {
 

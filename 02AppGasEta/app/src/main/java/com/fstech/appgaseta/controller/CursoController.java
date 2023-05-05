@@ -1,6 +1,6 @@
-package com.fstech.applistacurso.controller;
+package com.fstech.appgaseta.controller;
 
-import com.fstech.applistacurso.model.Curso;
+import com.fstech.appgaseta.model.Curso;
 
 import java.util.ArrayList;
 import java.util.List;
