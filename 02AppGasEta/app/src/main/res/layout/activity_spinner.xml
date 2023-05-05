@@ -37,7 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="@string/txt_hint_edit_promeiro_nome"
+                android:hint="@string/txt_hint_edit_gasolina"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName" />
 
@@ -49,7 +49,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="@string/txt_hint_sobrenome"
+                android:hint="@string/txt_hint_etanol"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -76,7 +76,7 @@
 
 
             <TextView
-                android:id="@+id/txtSpinner"
+                android:id="@+id/txtResultado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -85,7 +85,7 @@
                 android:layout_marginBottom="4dp"
                 android:background="@color/vermelho"
                 android:gravity="center_horizontal"
-                android:text="@string/txt_selecione_um_curso"
+                android:text="@string/txt_resultado"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
