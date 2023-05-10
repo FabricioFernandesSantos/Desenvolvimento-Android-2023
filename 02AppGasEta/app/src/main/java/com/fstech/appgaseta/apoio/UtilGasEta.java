@@ -13,7 +13,7 @@ public class UtilGasEta {
         double precoIdeal = gasolina * 0.70;
         String mensagemDeRetorno;
 
-        if (etanol<=precoIdeal){
+        if (etanol <= precoIdeal){
             mensagemDeRetorno = "Abastecer com Etanol";
         }else{
             mensagemDeRetorno = "Abastecer com Gasolina";

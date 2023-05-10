@@ -14,9 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fstech.appgaseta.R;
 import com.fstech.appgaseta.apoio.UtilGasEta;
+import com.fstech.appgaseta.model.Combustivel;
 
 public class GasEtaActivity extends AppCompatActivity {
 
+    Combustivel combustivelGasolina;
+    Combustivel combustivelEtanol;
 
     EditText edtGasolina;
     EditText edtEtanol;
@@ -80,7 +83,7 @@ public class GasEtaActivity extends AppCompatActivity {
                     Toast.makeText(GasEtaActivity.this, "Digite os dados obrigatórios", Toast.LENGTH_SHORT).show();
                 }
 
-                txtResultado.setText(UtilGasEta.calcularMelhorOpcao(5.12, 3.39));
+                txtResultado.setText(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
             }
         });
 
@@ -95,6 +98,20 @@ public class GasEtaActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                combustivelGasolina = new Combustivel();
+                combustivelEtanol = new Combustivel();
+
+                combustivelGasolina.setNomeDoCombustivel("Gasolina");
+                combustivelGasolina.setPrecoDoCombustivel(precoGasolina);
+
+                combustivelEtanol.setNomeDoCombustivel("Etanol");
+                combustivelEtanol.setPrecoDoCombustivel(precoEtanol);
+
+                combustivelGasolina.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol));
+                combustivelEtanol.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol));
+
+
 
             }
         });
