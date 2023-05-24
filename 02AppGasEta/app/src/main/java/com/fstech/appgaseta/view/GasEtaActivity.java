@@ -14,10 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fstech.appgaseta.R;
 import com.fstech.appgaseta.apoio.UtilGasEta;
+import com.fstech.appgaseta.controller.CombustivelController;
 import com.fstech.appgaseta.model.Combustivel;
+
+import java.util.List;
 
 public class GasEtaActivity extends AppCompatActivity {
 
+    CombustivelController controller;
     Combustivel combustivelGasolina;
     Combustivel combustivelEtanol;
 
@@ -34,12 +38,25 @@ public class GasEtaActivity extends AppCompatActivity {
 
     String Resultado;
 
-    ImageView imgImagem;
+    List<Combustivel> dados;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaseta);
+
+        controller = new CombustivelController(GasEtaActivity.this);
+
+        dados = controller.getListaDeDados();
+
+        Combustivel objAlteracao = dados.get(1);
+
+        objAlteracao.setNomeDoCombustivel("****Gasolina");
+        objAlteracao.setPrecoDoCombustivel(8.65);
+        objAlteracao.setRecomendacao("Sem recomendação");
+
+        controller.alterar(objAlteracao);
+
 
         edtGasolina = findViewById(R.id.editGasolina);
         edtEtanol = findViewById(R.id.editEtanol);
@@ -79,8 +96,12 @@ public class GasEtaActivity extends AppCompatActivity {
                     Resultado = UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol);
 
                     txtResultado.setText(Resultado);
+
+                    btnSalvar.setEnabled(true);
+
                 }else{
                     Toast.makeText(GasEtaActivity.this, "Digite os dados obrigatórios", Toast.LENGTH_SHORT).show();
+                    btnSalvar.setEnabled(false);
                 }
 
                 txtResultado.setText(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
@@ -92,12 +113,19 @@ public class GasEtaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 edtGasolina.setText("");
                 edtEtanol.setText("");
+
+                btnSalvar.setEnabled(false);
+
+                controller.limpar();
+
             }
         });
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
                 combustivelGasolina = new Combustivel();
                 combustivelEtanol = new Combustivel();
@@ -111,6 +139,8 @@ public class GasEtaActivity extends AppCompatActivity {
                 combustivelGasolina.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol));
                 combustivelEtanol.setRecomendacao(UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol));
 
+                controller.salvar(combustivelGasolina);
+                controller.salvar(combustivelEtanol);
 
 
             }
