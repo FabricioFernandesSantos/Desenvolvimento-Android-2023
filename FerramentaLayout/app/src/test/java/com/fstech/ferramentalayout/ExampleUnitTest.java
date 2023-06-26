@@ -1,4 +1,4 @@
-package com.fstech.applistacurso;
+package com.fstech.ferramentalayout;
 
 import org.junit.Test;
 

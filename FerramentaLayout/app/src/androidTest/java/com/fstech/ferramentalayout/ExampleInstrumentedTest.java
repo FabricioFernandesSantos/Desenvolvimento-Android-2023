@@ -1,4 +1,4 @@
-package com.fstech.applistacurso;
+package com.fstech.ferramentalayout;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.fstech.applistacurso", appContext.getPackageName());
+        assertEquals("com.fstech.ferramentalayout", appContext.getPackageName());
     }
 }
